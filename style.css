@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: radial-gradient(
+    circle at top,
+    #0b3b2f 0,
+    #041615 55%,
+    #020708 100%
+  );
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  color: #222;
+}
+
+.card {
+  width: 100%;
+  max-width: 380px;
+  background: #fdfdfd;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  padding: 24px 18px 20px;
+  text-align: center;
+  border: 1px solid #8ad6a1;
+}
+
+.card h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+/*botão da coroa*/
+
+.medalha-button {
+  border: none;
+  background: radial-gradient(
+    circle at 30% 20%,
+    #ffe9b8 0,
+    #f4c76a 35%,
+    #c69433 100%
+  );
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 4px auto 18px auto;
+  padding: 10px 18px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  animation: medalhaPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes medalhaPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-1px) scale(1.03);
+  }
+}
+
+.medalha-button:hover,
+.medalha-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.medalha-icone {
+  font-size: 1.6rem;
+}
+
+.medalha-texto {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #3b2b15;
+}
+
+/* textos que revelam */
+
+.mensagem {
+  margin-top: 6px;
+}
+
+.texto-completo {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(8px);
+  transition:
+    max-height 0.7s ease,
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.texto-completo.ativo {
+  max-height: 1000px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.texto-completo p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.resposta {
+  margin-top: 18px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  pointer-events: none;
+}
+
+.resposta.ativo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.resposta .pergunta {
+  font-size: 0rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.botoes-resposta {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-resposta {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: #2b7a4b;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(22, 120, 80, 0.6);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.btn-resposta:hover,
+.btn-resposta:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(255, 77, 136, 0.6);
+}
+
+.btn-resposta[data-resposta="sim"] {
+  background: #f0f0f0;
+  color: #444;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-resposta[data-resposta="sim"]:hover {
+  background: #e4e4e4;
+}
+
+.btn-resposta[data-resposta="nao"] {
+  background: #f0f0f0;
+  color: #444;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-resposta[data-resposta="nao"]:hover {
+  background: #e4e4e4;
+}
+
+/* mensagem final */
+
+.mensagem-final {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #333;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.mensagem-final.ativo {
+  opacity: 1;
+  transform: translateY(0);
+}
